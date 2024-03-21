@@ -10,7 +10,7 @@ fastqc &
 ```
 Load F1 and R1 datasets into GUI interface.
 Take screen shots of output files:
-![F1screenshot.png](/MyGenome/F1Screenshot.png).
+![F1screenshot.png](/F1Screenshot.png).
 ![F2screenshot.png](/data/F2screenshot.png).
 
 ## 2. Trimmming of sequences
