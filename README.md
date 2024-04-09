@@ -36,3 +36,8 @@ To count the total number of bases:
 ```bash
 cat UFVPY202_1_paired.fastq UFVPY202_2_paired.fastq | grep -v "+"| grep -e "F" -e "#" -e ":" -e "," | wc -c
 ```
+
+## 4.Assembly of MyGenome
+Upload the forward and reverse trimmed paired files to the Morgan Compute Cluster
+```bash
+scp UFVPY202_
