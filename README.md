@@ -39,5 +39,32 @@ cat UFVPY202_1_paired.fastq UFVPY202_2_paired.fastq | grep -v "+"| grep -e "F" -
 
 ## 4.Assembly of MyGenome
 Upload the forward and reverse trimmed paired files to the Morgan Compute Cluster
+  
+Copy the VelvetOptimiser script to your personal directory
 ```bash
-scp UFVPY202_
+cp ../SLURM_SCRIPTs/velvetoptimiser_noclean.sh .
+```
+Submit assemblies to the SLURM queue
+```bash
+sbatch velvetoptimiser_noclean.sh <genomeID> <start_knmer> <end_kmer> <step_size>
+```
+  For this SLURM queue the start k-mer was 61, the end k-mer was 131, and the step size was 10.
+  
+Inspect assembly file
+
+Re-run VelvetOptimiser witha  narrower k-mer range and step size of 2
+
+Rename optimized assembly according to the format GenomeID.fasta
+
+Use SimpleFastaHeaders.pl perl script to rename sequence headers to a standard format
+
+## 5. Check genome completeness using BUSCO
+Within the MCC supercomputer, copy the BuscoSingularity.sh script to your working directory
+
+Run BUSCO
+```bash
+sbatch /path to BuscoSingularity.sh MyGenome.fasta
+```
+
+## 6. BLASTing MyGenome
+
