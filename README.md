@@ -124,4 +124,38 @@ awk '$3/$4 > 0.9 {print $2 ",mitochondrion"}' B71v2sh.MyGenome.BLAST > MyGenome_
 ```
 [UFVPY202_mitochondrion.csv](https://github.com/LeighanneLyvers/MyGenome/blob/main/UFVPY202_mitochondrion.csv)
 
+BLAST the genome assembly against a repeat-masked version of the B71 reference genome:
+```bash
+//within the MCC
+//copy B71v2sh_masked.fasta genome to own directory
+//run a blast search
+```
+
+## 7. Gene Prediction
+**SNAP**
+Start a screen that begins bash as a login shell, ensuring the environment variables needed are set correctly.
+```bash
+screen -S genes bash -l
+```
+Change into the snap directory
+```bash
+cd ~/genes/snap
+```
+Download B71ref2.fasta and B71Ref2_a0.3.gff3 files from the Farman Mac Desktop
+```bash
+scp FarmanMacDesktopAddress:~/Desktop/B71ref2.fasta .
+scp FarmanMacDesktopAddress:~/Desktop/B71Ref2_a0.3.gff3 .
+```
+Append the genome fasta sequence to the end of the gff3 file
+```bash
+echo '##FASTA' | cat B71Ref2_a0.3.gff3 - B71Ref2.fasta > B71Ref2.gff3
+```
+Check the format of the B71Ref2.gff3 file
+```bash
+grep '##FASTA' -B 5 -A 5
+```
+Convert MAKER annotation to ZFF for SNAP
+```bash
+maker2zff B71Ref2.gff3
+```
 
