@@ -122,6 +122,6 @@ blastn -query MoMitochondrion.fasta -subject MyGenome_nh.fasta -evalue 1e-50 -ma
 //export a list of contigs that mostly comprise the mitochondrial sequence
 awk '$3/$4 > 0.9 {print $2 ",mitochondrion"}' B71v2sh.MyGenome.BLAST > MyGenome_mitochondrion.csv
 ```
-
+[UFVPY202_mitochondrion.csv](https://github.com/LeighanneLyvers/MyGenome/blob/main/UFVPY202_mitochondrion.csv)
 
 
