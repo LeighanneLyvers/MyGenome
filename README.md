@@ -118,4 +118,10 @@ cd blast
 //download MoMitochondrion.fasta
 scp -r AppliedBioInfo@address:~/Desktop/MoMitochondrion.fasta .
 //run the blast
+blastn -query MoMitochondrion.fasta -subject MyGenome_nh.fasta -evalue 1e-50 -max_target_seqs 20000 -outfmt '6 qseqid sseqid slen length qstart qend sstart send btop' > B71v2sh.MyGenome.BLAST
+//export a list of contigs that mostly comprise the mitochondrial sequence
+awk '$3/$4 > 0.9 {print $2 ",mitochondrion"}' B71v2sh.MyGenome.BLAST > MyGenome_mitochondrion.csv
+```
+
+
 
