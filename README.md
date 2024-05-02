@@ -11,7 +11,7 @@ fastqc &
 Load F1 and R1 datasets into GUI interface.
 Take screen shots of output files:
 ![F1screenshot.png](F1Screenshot).
-![R2.png](R1).
+![R1screenshot.png](R1Screenshot).
 
 ## 2. Trimming of sequences
 The sequences were then trimmed utilizing Trimmomatic:
