@@ -1,0 +1,24 @@
+2024-03-21 15:15:23 DEBUG:busco.run_BUSCO	Command line: /usr/local/Miniconda3/envs/busco-5.7.0/bin/busco --in UFVPY202.fasta --out UFVPY202_busco --mode genome --lineage_dataset ascomycota_odb10 -f
+2024-03-21 15:15:23 INFO:busco.run_BUSCO	***** Start a BUSCO v5.7.0 analysis, current time: 03/21/2024 15:15:23 *****
+2024-03-21 15:15:23 DEBUG:busco.ConfigManager	Getting config file
+2024-03-21 15:15:23 INFO:busco.ConfigManager	Configuring BUSCO with local environment
+2024-03-21 15:15:23 INFO:busco.BuscoConfig	Running genome mode
+2024-03-21 15:15:23 ERROR:busco.BuscoRunner	Input UFVPY202.fasta does not exist
+2024-03-21 15:15:23 DEBUG:busco.BuscoRunner	Input UFVPY202.fasta does not exist
+Traceback (most recent call last):
+  File "/usr/local/Miniconda3/envs/busco-5.7.0/lib/python3.7/site-packages/busco/run_BUSCO.py", line 68, in run
+    self.load_config()
+  File "/usr/local/Miniconda3/envs/busco-5.7.0/lib/python3.7/site-packages/busco/run_BUSCO.py", line 60, in load_config
+    self.config_manager.load_busco_config_main()
+  File "/usr/local/Miniconda3/envs/busco-5.7.0/lib/python3.7/site-packages/busco/BuscoLogger.py", line 62, in wrapped_func
+    self.retval = func(*args, **kwargs)
+  File "/usr/local/Miniconda3/envs/busco-5.7.0/lib/python3.7/site-packages/busco/ConfigManager.py", line 63, in load_busco_config_main
+    self.config_main.validate()
+  File "/usr/local/Miniconda3/envs/busco-5.7.0/lib/python3.7/site-packages/busco/BuscoConfig.py", line 637, in validate
+    self._check_required_input_exists()
+  File "/usr/local/Miniconda3/envs/busco-5.7.0/lib/python3.7/site-packages/busco/BuscoConfig.py", line 823, in _check_required_input_exists
+    "Input {} does not exist".format(self._input_filepath)
+busco.Exceptions.BatchFatalError: Input UFVPY202.fasta does not exist
+2024-03-21 15:15:23 ERROR:busco.BuscoRunner	BUSCO analysis failed!
+2024-03-21 15:15:23 ERROR:busco.BuscoRunner	Check the logs, read the user guide (https://busco.ezlab.org/busco_userguide.html), and check the BUSCO issue board on https://gitlab.com/ezlab/busco/issues
+
