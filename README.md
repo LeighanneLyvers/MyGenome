@@ -28,14 +28,17 @@ Take screen shots of the output files:
 
 ## 3. Counting the number of paired reads and the total number of bases
 From the paired reads we then can then count the number of paired reads and the total number of bases. 
-To count the number of paired reads:
+To count the number of paired reads after cleaning:
 ```bash
 grep -c '@A00261:902' UFVPY202_1_paired.fastq
 ```
-To count the total number of bases:
+Count: 9,686,169
+
+To count the total number of bases in cleaned reads:
 ```bash
 cat UFVPY202_1_paired.fastq UFVPY202_2_paired.fastq | grep -v "+"| grep -e "F" -e "#" -e ":" -e "," | wc -c
 ```
+Count: 2,923,408,486
 
 ## 4.Assembly of MyGenome
 Upload the forward and reverse trimmed paired files to the Morgan Compute Cluster
@@ -77,6 +80,7 @@ nano SimpleFastaHeaders.pl
 //run script
 perl /path to SimpleFastaHeaders.pl /path to genomeID.fasta genomeID
 ```
+**insert slurm script and logfile**
 
 ## 5. Check genome completeness using BUSCO
 Within the MCC supercomputer, copy the BuscoSingularity.sh script to your working directory
@@ -93,6 +97,7 @@ Inspect the BUSCO log
 ```bash
 cat busco_logID.log
 ```
+**insert slurm-xxxxx.out busco.log and UFVPY202_nh.fasta**
 
 ## 6. BLASTing MyGenome
 Copy the CullShortContigs.pl script from the MCC to VM
@@ -122,7 +127,6 @@ blastn -query MoMitochondrion.fasta -subject MyGenome_nh.fasta -evalue 1e-50 -ma
 //export a list of contigs that mostly comprise the mitochondrial sequence
 awk '$3/$4 > 0.9 {print $2 ",mitochondrion"}' B71v2sh.MyGenome.BLAST > MyGenome_mitochondrion.csv
 ```
-[UFVPY202_mitochondrion.csv](https://github.com/LeighanneLyvers/MyGenome/blob/main/UFVPY202_mitochondrion.csv)
 
 BLAST the genome assembly against a repeat-masked version of the B71 reference genome:
 ```bash
@@ -130,6 +134,9 @@ BLAST the genome assembly against a repeat-masked version of the B71 reference g
 //copy B71v2sh_masked.fasta genome to own directory
 //run a blast search
 ```
+
+[UFVPY202_mitochondrion.csv](https://github.com/LeighanneLyvers/MyGenome/blob/main/UFVPY202_mitochondrion.csv)
+**insert MoMitochondrion.UFVPY202.BLAST, B71v2sh.UFVPY202.BLAST and B71v2sh_v_UFVPY202_out**
 
 ## 7. Gene Prediction
 **SNAP**
@@ -189,4 +196,40 @@ Meaning of the parameters:
 --singlestrand=true //Predict genes on each strand separately;
 --progress=true //show a progress bar for each step of the gene finding process
 ```
+**insert MyGenome-augustus.gff3**
+
+**MAKER**
+Create the MAKER configuration files
+```bash
+maker -CTL
+```
+Open the configuration file maker_opts.ctl 
+```bash
+nano maker_opts.ctl
+```
+Make the following configurations:
+genome=/home/yourusername/genes/snap/MyGenome.fasta
+model_org= must be set to blank
+repeat_protein= must be set to blank
+snaphmm=/home/yourusername/genes/snap/Moryzae.hmm
+augustus_species=magnaporthe_grisea
+keep_preds=1
+protein=/home/yourusername/genes/maker/genbank/ncbi-protein/Magnaporthe_organism.fasta
+
+Save and close this file
+Run MAKER
+```bash
+//run screen
+maker 2>&1 | tee maker.log
+//the above will run MAKER but will also log errors, not just the normal output. It will send errors to the pipe using the 2>&1
+
+//merge everything together into one GFF file
+gff3_merge -d MyGenome.maker.output/MyGenome_master_datastore_index.log -o MyGenome-annotations.gff
+```
+The result is a .gff file and a .fasta file that contains the predicted genes
+**insert .gff and .fasta file**
+----
+The Genome Metrics are included below:
+| Sample Name | # raw reads (single end) | #cleaned reads used for assembly | #total bases in cleaned reads | Genome size (step 10) | #contigs (step 10) | N50 (step 10) | Genome size (step 2) | N50 (step 2) | fold coverage | BUSCO score | BUSCO (completed + fragmented) | # predicted proteins |
+| -----------
 
