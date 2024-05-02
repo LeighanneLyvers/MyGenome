@@ -80,7 +80,7 @@ nano SimpleFastaHeaders.pl
 //run script
 perl /path to SimpleFastaHeaders.pl /path to genomeID.fasta genomeID
 ```
-**insert slurm script and logfile**
+
 
 ## 5. Check genome completeness using BUSCO
 Within the MCC supercomputer, copy the BuscoSingularity.sh script to your working directory
@@ -97,7 +97,7 @@ Inspect the BUSCO log
 ```bash
 cat busco_logID.log
 ```
-**insert slurm-xxxxx.out busco.log and UFVPY202_nh.fasta**
+
 
 ## 6. BLASTing MyGenome
 Copy the CullShortContigs.pl script from the MCC to VM
@@ -136,7 +136,7 @@ BLAST the genome assembly against a repeat-masked version of the B71 reference g
 ```
 
 [UFVPY202_mitochondrion.csv](https://github.com/LeighanneLyvers/MyGenome/blob/main/UFVPY202_mitochondrion.csv)
-**insert MoMitochondrion.UFVPY202.BLAST, B71v2sh.UFVPY202.BLAST and B71v2sh_v_UFVPY202_out**
+**insert MoMitochondrion.UFVPY202.BLAST, B71v2sh.UFVPY202.BLAST**
 
 ## 7. Gene Prediction
 **SNAP**
@@ -227,9 +227,10 @@ maker 2>&1 | tee maker.log
 gff3_merge -d MyGenome.maker.output/MyGenome_master_datastore_index.log -o MyGenome-annotations.gff
 ```
 The result is a .gff file and a .fasta file that contains the predicted genes
+
 **insert .gff and .fasta file**
+
 ----
-The Genome Metrics are included below:
-| Sample Name | # raw reads (single end) | #cleaned reads used for assembly | #total bases in cleaned reads | Genome size (step 10) | #contigs (step 10) | N50 (step 10) | Genome size (step 2) | N50 (step 2) | fold coverage | BUSCO score | BUSCO (completed + fragmented) | # predicted proteins |
-| -----------
+
+
 
