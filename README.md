@@ -13,7 +13,7 @@ Take screen shots of output files:
 ![F1screenshot.png](F1Screenshot).
 ![F2screenshot.png](/data/F2screenshot.png).
 
-## 2. Trimmming of sequences
+## 2. Trimming of sequences
 The sequences were then trimmed utilizing Trimmomatic:
 ```bash
 java -jar ~/assembly/trimmomatic-0.38.jar PE -threads 2 -phred33 -trimlog UFVPY202_errorlog.txt UFVPY202_1.fq.gz UFVPY202_2.fq.gz UFVPY202_1_paired.fastq UFVPY202_1_unpaired.fastq UFVPY202_2_paired.fastq UFVPY202_2_unpaired.fastq ILLUMINACLIP:adaptors.fasta:2:30:10 SLIDINGWINDOW:20:20 MINLEN:120
@@ -157,5 +157,36 @@ grep '##FASTA' -B 5 -A 5
 Convert MAKER annotation to ZFF for SNAP
 ```bash
 maker2zff B71Ref2.gff3
+```
+Train the HMM using the forge tool
+```bash
+forge export.ann export.dna
+```
+Condense everything into a single file for use with runs of SNAP
+```bash
+hmm-assembler.pl Moryzae . > Moryzae.hmm
+```
+Run SNAP
+```bash
+snap-hmm Moryzae.hmm MyGenome.fasta > MyGenome-snap.zff
+```
+Generate a GFF file in the older GFF2 format
+```bash
+snap-hmm Moryzae.hmm MyGenome.fasta -gff > MyGenome-snap.gff2
+```
+Resulting File:
+**insert MyGenome-snap.gff2**
+
+**AUGUSTUS**
+Run AUGUSTUS 
+```bash
+augustus --species=magnaporthe_grisea --gff3=on --singlestrand=true --progress=true ../snap/MyGenome.fasta > MyGenome-augustus.gff3
+```
+Meaning of the parameters:
+```bash
+--species=magnaporthe_grisea //Specifies the parameter file to use
+--gff3=on //Produce GFF3-format output 
+--singlestrand=true //Predict genes on each strand separately;
+--progress=true //show a progress bar for each step of the gene finding process
 ```
 
