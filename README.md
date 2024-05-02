@@ -98,6 +98,9 @@ Inspect the BUSCO log
 cat busco_logID.log
 ```
 
+BUSCO logfile
+[busco_3045895.log](https://github.com/LeighanneLyvers/MyGenome/blob/main/busco_3045895.log)
+
 
 ## 6. BLASTing MyGenome
 Copy the CullShortContigs.pl script from the MCC to VM
