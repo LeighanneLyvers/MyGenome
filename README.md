@@ -23,8 +23,8 @@ These were then analysed utilizing FASTQC:
 fastqc UFVPY202_1_paired.fastq UFVPY202_1_unpaired.fastq UFVPY202_2_paired.fastq UFVPY202_unpaired.fastq
 ```
 Take screen shots of the output files:
-![F1Paired.png](/F1Paired.png).
-![F2Paired.png](/F2Paired.png).
+![F1Pairedscreenshot.png](F1PairedScreenshot).
+![R1Pairedscreenshot.png](R1PairedScreenshot).
 
 ## 3. Counting the number of paired reads and the total number of bases
 From the paired reads we then can then count the number of paired reads and the total number of bases. 
