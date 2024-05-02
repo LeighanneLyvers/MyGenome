@@ -134,9 +134,13 @@ BLAST the genome assembly against a repeat-masked version of the B71 reference g
 //copy B71v2sh_masked.fasta genome to own directory
 //run a blast search
 ```
-
+The .csv file containing the contigs:
 [UFVPY202_mitochondrion.csv](https://github.com/LeighanneLyvers/MyGenome/blob/main/UFVPY202_mitochondrion.csv)
-**insert MoMitochondrion.UFVPY202.BLAST, B71v2sh.UFVPY202.BLAST**
+The BLAST file when running the MoMitochondrion.fasta sequence against the final genome assembly:
+[MoMitochondrion.UFVPY202.BLAST](https://github.com/LeighanneLyvers/MyGenome/blob/main/MoMitochondrion.UFVPY202.BLAST)
+The BLAST file when runnint the genome assembly against a repeat-masked version of the B71 reference genome:
+[B71v2sh.UFVPY202.BLAST](https://github.com/LeighanneLyvers/MyGenome/blob/main/B71v2sh.UFVPY202.BLAST)
+
 
 ## 7. Gene Prediction
 **SNAP**
@@ -182,7 +186,7 @@ Generate a GFF file in the older GFF2 format
 snap-hmm Moryzae.hmm MyGenome.fasta -gff > MyGenome-snap.gff2
 ```
 Resulting File:
-**insert MyGenome-snap.gff2**
+[UFPVY202-snap.gff2](https://github.com/LeighanneLyvers/MyGenome/blob/main/UFVPY202-snap.gff2)
 
 **AUGUSTUS**
 Run AUGUSTUS 
@@ -196,6 +200,8 @@ Meaning of the parameters:
 --singlestrand=true //Predict genes on each strand separately;
 --progress=true //show a progress bar for each step of the gene finding process
 ```
+Resulting file as a .zip:
+[UFVPY202-augustus.gff3.zip](https://github.com/LeighanneLyvers/MyGenome/blob/main/UFVPY202-augustus.gff3.zip)
 **insert MyGenome-augustus.gff3**
 
 **MAKER**
@@ -226,11 +232,11 @@ maker 2>&1 | tee maker.log
 //merge everything together into one GFF file
 gff3_merge -d MyGenome.maker.output/MyGenome_master_datastore_index.log -o MyGenome-annotations.gff
 ```
-The result is a .gff file and a .fasta file that contains the predicted genes
+The result is a .gff file and a .fasta file that contains the predicted genes, in this instance they were compressed to a .zip file for storage concerns:
+[UFVPY202-genes.fasta.all.maker.augustus.proteins.fasta.zip](https://github.com/LeighanneLyvers/MyGenome/blob/main/UFVPY202-genes.fasta.all.maker.augustus.proteins.fasta.zip)
+[UFVPY202-annotations.gff.zip](https://github.com/LeighanneLyvers/MyGenome/blob/main/UFVPY202-annotations.gff.zip)
 
-**insert .gff and .fasta file**
 
-----
 
 
 
