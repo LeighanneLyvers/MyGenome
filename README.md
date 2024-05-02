@@ -235,8 +235,8 @@ maker 2>&1 | tee maker.log
 //merge everything together into one GFF file
 gff3_merge -d MyGenome.maker.output/MyGenome_master_datastore_index.log -o MyGenome-annotations.gff
 ```
-The result is a .gff file and a .fasta file that contains the predicted genes, in this instance they were compressed to a .zip file for storage concerns:
-[UFVPY202-genes.fasta.all.maker.augustus.proteins.fasta.zip](https://github.com/LeighanneLyvers/MyGenome/blob/main/UFVPY202-genes.fasta.all.maker.augustus.proteins.fasta.zip)
+The result is a .gff file and a .fasta file that contains the predicted genes:
+[UFVPY202-genes.fasta.all.maker.proteins.fasta.zip](https://github.com/LeighanneLyvers/MyGenome/blob/main/UFVPY202-genes.fasta.all.maker.proteins.fasta)
 [UFVPY202-annotations.gff.zip](https://github.com/LeighanneLyvers/MyGenome/blob/main/UFVPY202-annotations.gff.zip)
 
 
