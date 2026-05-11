@@ -1,6 +1,8 @@
 # MyGenome
 Analyses for ABT480/CS485G genome assembly
 
+Published Article: https://journals.asm.org/doi/10.1128/mra.00091-25
+
 ## 1. Analysis of sequence quality
 The F1 and R1 sequence datasets were analysed using FASTQC: 
 ```bash
